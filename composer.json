@@ -1,0 +1,30 @@
+{
+    "name": "iniznet/petty",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "iniznet",
+            "email": "iniznet@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/iniznet/petty-framework.git"
+        }
+    ],
+    "require": {
+        "iniznet/petty-framework": "dev-master",
+        "vlucas/phpdotenv": "5.5.x-dev"
+    }
+}
