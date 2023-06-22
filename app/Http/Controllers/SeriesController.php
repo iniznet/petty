@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SeriesModel;
 use Petty\Auth\Auth;
 use Petty\Database\QueryBuilder as DB;
-use Petty\Http\Validator;
 
-class SeriesController extends Controller
+class SeriesController extends BaseController
 {
 	public function index()
 	{
@@ -15,9 +14,7 @@ class SeriesController extends Controller
 		$search = $this->input->get('search');
 
 		if ($search) {
-			$series = DB::table('series')
-				->where('title', $search, 'LIKE')
-				->get();
+			$series = DB::table('series')->where('title', $search, 'LIKE')->get();
 		} else {
 			$series = SeriesModel::all();
 		}
@@ -45,28 +42,12 @@ class SeriesController extends Controller
 		$status = $this->input->post('status');
 
 		// validate the request
-		$validate = Validator::validate([
-			'title' => [
-				'required' => true,
-			],
-			'release_year' => [
-				'required' => true,
-			],
-			'author' => [
-				'required' => true,
-			],
-			'artist' => [
-				'required' => true,
-			],
-			'status' => [
-				'required' => true,
-			]
-			], [
-			'title' => $title,
-			'release_year' => $release_year,
-			'author' => $author,
-			'artist' => $artist,
-			'status' => $status,
+		$validate = $this->input->validate([
+			'title' => ['required' => true],
+			'release_year' => ['required' => true],
+			'author' => ['required' => true],
+			'artist' => ['required' => true],
+			'status' => ['required' => true]
 		]);
 
 		// if valid, create the series
@@ -99,33 +80,17 @@ class SeriesController extends Controller
 		$status = $this->input->post('status');
 
 		// validate the request
-		$validate = Validator::validate([
-			'title' => [
-				'required' => true,
-			],
-			'release_year' => [
-				'required' => true,
-			],
-			'author' => [
-				'required' => true,
-			],
-			'artist' => [
-				'required' => true,
-			],
-			'status' => [
-				'required' => true,
-			]
-			], [
-			'title' => $title,
-			'release_year' => $release_year,
-			'author' => $author,
-			'artist' => $artist,
-			'status' => $status,
+		$validate = $this->input->validate([
+			'title' => ['required' => true],
+			'release_year' => ['required' => true],
+			'author' => ['required' => true],
+			'artist' => ['required' => true],
+			'status' => ['required' => true]
 		]);
 
 		// if valid, update the series
 		if (!$validate->fails()) {
-			(new SeriesModel())->update($id, [
+			(new SeriesModel())->update($id,[
 				'title' => $title,
 				'slug' => str_replace(' ', '-', strtolower($title)),
 				'release_year' => $release_year,
