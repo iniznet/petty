@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Petty\Auth\Auth;
 use Petty\Http\Validator;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
 	public function index()
 	{
@@ -35,5 +35,11 @@ class LoginController extends Controller
 		} else {
 			return redirect('admin');
 		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return redirect('login');
 	}
 }
