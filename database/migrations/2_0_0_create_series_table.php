@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->string('author', 50);
 			$table->string('artist', 50);
 			$table->integer('release_year', 4);
-			$table->text('content');
+			$table->text('content')->nullable();
 			$table->unsignedBigInteger('author_id');
 			$table->timestamps();
 
