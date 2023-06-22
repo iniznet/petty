@@ -26,10 +26,10 @@ use Petty\View\View;
  * 22. app_path()
  */
 
-function dd(mixed $data): void
+function dd(mixed ...$data): void
 {
 	printf('<pre>%s</pre>', print_r($data, true));
-	die();
+	exit;
 }
 
 function view(string $view, array $data = []): void
