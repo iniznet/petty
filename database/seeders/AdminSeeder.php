@@ -11,11 +11,11 @@ class AdminSeeder extends Seed
 	{
 		$this->group(function () {
 			$data = [
-				'name' => 'User',
-				'username' => 'user1',
-				'email' => 'user1@mail.com',
-				'password' => password_hash('password', PASSWORD_DEFAULT),
-				'role' => 'member',
+				'name' => 'Admin',
+				'username' => 'admin',
+				'email' => 'admin@mail.com',
+				'password' => password_hash('admin', PASSWORD_DEFAULT),
+				'role' => 'admin',
 			];
 
 			DB::table('users')->insert($data);

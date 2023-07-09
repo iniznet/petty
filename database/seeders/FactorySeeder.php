@@ -8,6 +8,7 @@ class FactorySeeder extends Seeder
 {
 	public function run(): void
 	{
-		$this->add(UserSeeder::class);
+		$this->add(AdminSeeder::class, 1);
+		$this->add(UserSeeder::class, 1);
 	}
 }
